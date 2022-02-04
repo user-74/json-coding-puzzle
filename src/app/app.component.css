@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+
+* {
+  font-family: "JetBrains Mono", monospace;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+ul,
+ol {
+  margin: 0;
+}
+
+.tutorial-block {
+  margin: 20px;
+}

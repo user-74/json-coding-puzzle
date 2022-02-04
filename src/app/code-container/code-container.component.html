@@ -1,0 +1,12 @@
+<div class="code-container">
+  <div cdkDropListGroup>
+    <ng-container *ngFor="let line of lines">
+      <app-code-line [line]="line"></app-code-line>
+    </ng-container>
+    <app-empty-line></app-empty-line>
+  </div>
+</div>
+
+<div style="text-align: center" *ngIf="completed">
+  Congratulations! You have successfully solved this puzzle.
+</div>

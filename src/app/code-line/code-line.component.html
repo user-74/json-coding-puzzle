@@ -1,0 +1,38 @@
+<div
+  *ngIf="line.tokens.length > 0"
+  class="line-container"
+  [style.marginLeft.px]="line.indentations * 24"
+>
+  <div
+    cdkDropList
+    [cdkDropListData]="line.tokens"
+    cdkDropListOrientation="horizontal"
+    class="code-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div
+      class="code-box"
+      *ngFor="let token of line.tokens"
+      [ngClass]="{'disabled': completed}"
+      cdkDrag
+    >
+      <ng-container *ngFor="let text of processInputs(token); let i = index">
+        <input
+          *ngIf="i > 0"
+          type="text"
+          class=""
+          [(ngModel)]="token.value[i - 1]"
+          [disabled]="completed"
+          (input)="checkSol()"
+        />
+        <span
+          [ngStyle]="{
+            color: getColor(token)
+          }"
+          >{{ text }}</span
+        >
+      </ng-container>
+      <!-- text after {input} -->
+    </div>
+  </div>
+</div>
