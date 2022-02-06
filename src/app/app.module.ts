@@ -8,12 +8,17 @@ import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CodeContainerComponent } from './code-container/code-container.component';
 import { CodeLineComponent } from './code-line/code-line.component';
-
+import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { EmptyLineComponent } from './empty-line/empty-line.component';
 
 @NgModule({
-  declarations: [AppComponent, CodeContainerComponent, CodeLineComponent, EmptyLineComponent],
+  declarations: [
+    AppComponent,
+    CodeContainerComponent,
+    CodeLineComponent,
+    EmptyLineComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,6 +26,7 @@ import { EmptyLineComponent } from './empty-line/empty-line.component';
     FormsModule,
     DragDropModule,
     MatInputModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

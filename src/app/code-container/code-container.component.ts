@@ -9,7 +9,7 @@ import { Line } from '../models/line';
 })
 export class CodeContainerComponent implements OnInit {
   lines: Line[] = [];
-  
+
   constructor(private codeService: CodeService) {}
 
   ngOnInit(): void {
@@ -20,6 +20,14 @@ export class CodeContainerComponent implements OnInit {
    * Get completed state to display congratulations message
    */
   get completed() {
-    return this.codeService.complete
+    return this.codeService.complete;
+  }
+
+  onShowSolution(): void {
+    this.codeService.displaySolution();
+  }
+
+  onReset(): void {
+    this.codeService.resetSolution();
   }
 }

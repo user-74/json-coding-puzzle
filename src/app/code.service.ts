@@ -15,9 +15,14 @@ import { Line } from './models/line';
 export class CodeService {
   public lines: Line[];
   public complete: boolean = false;
+  private solution: Line[];
+  private start: Line[];
 
   constructor() {
-    this.lines = start.lines;
+    this.start = start.lines;
+    this.solution = solution.lines;
+    this.lines = Array(this.start.length).fill(null);
+    this.resetSolution();
   }
 
   /**
@@ -47,7 +52,41 @@ export class CodeService {
    */
   public checkSolution(): void {
     this.complete =
-      JSON.stringify(this.lines.filter((line) => line.tokens.length > 0)) ==
-      JSON.stringify(solution.lines);
+      JSON.stringify(
+        this.lines.filter((line: Line) => line.tokens.length > 0)
+      ) == JSON.stringify(this.solution);
+  }
+
+  /**
+   * Display solution
+   */
+  displaySolution(): void {
+    this._updateSolution(this.solution);
+  }
+
+  resetSolution(): void {
+    this._updateSolution(this.start);
+  }
+
+  _updateSolution(solution: Line[]): void {
+    for (let i = 0; i < solution.length; i++) {
+      if (!this.lines[i]) {
+        const newLine = { indentations: 0, tokens: [] };
+        this.lines[i] = newLine;
+      }
+
+      this.lines[i].indentations = solution[i].indentations;
+
+      for (let j = 0; j < this.lines[i].tokens.length; j++) {
+        this.lines[i].tokens.splice(j--, 1);
+      }
+
+      solution[i].tokens.forEach((token) => {
+        this.lines[i].tokens.push(token);
+      });
+    }
+
+    this.lines.splice(solution.length, this.lines.length - solution.length);
+    this.checkSolution();
   }
 }
