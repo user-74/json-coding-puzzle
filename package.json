@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "predeploy": "ng build --prod --base-href 'https://user-74.github.io/json-coding-puzzle/'",
+    "deploy": "npx angular-cli-ghpages --dir=dist/json-coding-puzzle"
   },
   "private": true,
   "dependencies": {
