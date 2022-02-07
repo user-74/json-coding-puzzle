@@ -65,6 +65,7 @@ export class CodeService {
   }
 
   resetSolution(): void {
+    this.start = JSON.parse(JSON.stringify(start.lines));
     this._updateSolution(this.start);
   }
 
